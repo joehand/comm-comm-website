@@ -48,7 +48,6 @@ function view (state, emit) {
 
           ${data.issues.map(issue => {
             const content = issue.content.split(/^(.*)?\n/)
-            console.log(content)
             return html`
               <article class="center mw5 mw6-ns hidden ba mv4">
                 <h1 class="f4 bg-near-black white mv0 pv2 ph3">
