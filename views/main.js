@@ -1,6 +1,8 @@
-var html = require('choo/html')
+const html = require('choo/html')
+const raw = require('choo/html/raw')
+const data = require('../issues.json')
 
-var TITLE = 'comm-comm-site - main'
+const TITLE = 'dat comm-comm'
 
 module.exports = view
 
@@ -9,150 +11,59 @@ function view (state, emit) {
 
   return html`
     <body class="code lh-copy">
-      <main class="pa3 cf center">
-        <section class="fl mw6 w-50-m w-third-l pa3">
+      <h1 class="f-title pb2 tc bb mw6 center">Dat Comm-Comm</h1>
+      <main class="w-100 flex-ns justify-center">
+        <section class="mw6 w-50-m w-third-l pa3">
           <h2>1.</h2>
           <p>
-            Welcome to your new Choo application.
-            We're very happy you've made it this far.
+            <a href="https://github.com/dat-land/comm-comm">Dat comm-comm</a> is an open working group with a focus on improving the communication around Dat. It is also a place where users and companies can share their experiences using Dat. Loosely structured community communication repo.
           </p>
 
           <p>
-            You're now in control of your own Choo app. The moment you decide to
-            deploy it, it'll work offline and on any device.
+            Open to anyone.
           </p>
 
           <br>
-        </section>
 
-        <section class="fl mw6 w-50-m w-third-l pa3">
           <h2>2.</h2>
 
           <p>
-            We've outfitted your project with a small selection of commands to
-            help you achieve results faster:
+            Currently, the community members hold weekly calls, in turns held by community members Martin and Diego.
           </p>
 
           <ul>
-            <li class="mb3">
-              <strong>npm start</strong><br>
-              start your project for local development.
+            <li class="mb2">
+              <strong>eastern-europe/asia/oceania</strong><br>
+              As Martin is in Japan, he holds the calls between GMT 9:00 which should suite eastern-europe/asia/oceania.
             </li>
-            <li class="mb3">
-              <strong>npm run build</strong><br>
-              compile your project for production.
-            </li>
-            <li class="mb3">
-              <strong>npm run inspect</strong><br>
-              visualize your project's dependencies.
-            </li>
-            <li class="mb3">
-              <strong>npm run create</strong><br>
-              scaffold a new file.
+            <li class="mb2">
+              <strong>europe and the americas</strong><br>
+              Diego's call are usually at GMT 18:00 which should suite the europe and the americas.
             </li>
           </ul>
-
-          <br>
         </section>
 
-        <section class="fl mw6 w-50-m w-third-l pa3">
-          <h2>3.</h2>
+        <section class="fl mw7 w-50-m pa3 ml3">
+          <h2>Upcoming Meetings:</h2>
 
-          <p>
-            Your project also comes with a few directories. These names have
-            special meanings for the build tool, so it's good to know what they
-            do.
-          </p>
-
-          <ul>
-            <li class="mb3">
-              <strong>assets/</strong><br>
-              Static files that can be served up, such as images and fonts.
-            </li>
-            <li class="mb3">
-              <strong>components/</strong><br>
-              Reusable fragments that can be composed into views.
-            </li>
-            <li class="mb3">
-              <strong>stores/</strong><br>
-              Pieces of logic that are shared by multiple components.
-            </li>
-            <li class="mb3">
-              <strong>views/</strong><br>
-              Combinations of components that are mapped to routes.
-            </li>
-          </ul>
-
-          <br>
-        </section>
-
-        <section class="fl mw6 w-50-m w-third-l pa3">
-          <h2>4.</h2>
-
-          <p>
-            So far we've provided you with one base view, <a
-            href="/oh-no">one fallback view</a>, and one store. This serves
-            as an example. A place to start from. It's your project now, so
-            go ahead and delete them once you know how they work.
-          </p>
-
-          <p>Number of clicks stored: ${state.totalClicks}</p>
-
-          <button class="dim ph3 ba bw1 pv2 b--black pointer bg-white"
-            onclick=${handleClick}>
-            Emit a click event
-          </button>
-
-          <br><br>
-        </section>
-
-        <section class="fl mw6 w-50-m w-third-l pa3">
-          <h2>5.</h2>
-
-          <p>
-            To make your development journey more pleasant, we've also
-            included <a
-            href="https://github.com/choojs/choo-devtools">devtools</a>. If
-            you open your browser console, here's a selection of the
-            commands that are at your disposal:
-
-            <ul>
-              <li class="mb3">
-                <strong>choo.state</strong><br>
-                Log the current application state.
-              </li>
-              <li class="mb3">
-                <strong>choo.log</strong><br>
-                Log the last 150 events received by the event bus.
-              </li>
-              <li class="mb3">
-                <strong>choo.emit</strong><br>
-                Emit an event inside the application event bus.
-              </li>
-              <li class="mb3">
-                <strong>choo.help</strong><br>
-                See an overview of all available commands.
-              </li>
-            </ul>
-          </p>
-        </section>
-
-        <section class="fl mw6 w-50-m w-third-l pa3">
-          <h2>6.</h2>
-
-          <p>
-            And that's about it! Thanks for reading. If you have any
-            questions, check out the <a  href="https://choo.io">docs</a> or reach
-            out on <a href="https://github.com/choojs/choo">GitHub</a> or <a
-            href="https://www.irccloud.com/irc/freenode/channel/choo">IRC</a>.
-            We're online everyday, and always around to help. Happy hacking!
-          </p>
+          ${data.issues.map(issue => {
+            const content = issue.content.split(/^(.*)?\n/)
+            console.log(content)
+            return html`
+              <article class="center mw5 mw6-ns hidden ba mv4">
+                <h1 class="f4 bg-near-black white mv0 pv2 ph3">
+                    ${raw(content[1])}
+                </h1>
+                <div class="pa3 bt">
+                  <p class="f6 f5-ns lh-copy measure mv0">
+                    ${raw(content[2])}
+                  </p>
+                </div>
+              </article>
+            `
+          })}
         </section>
       </main>
     </body>
   `
-
-  function handleClick () {
-    emit('clicks:add', 1)
-  }
 }

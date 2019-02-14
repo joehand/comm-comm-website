@@ -1,7 +1,7 @@
 # comm-comm-site
  website for the Dat comm-comm working group
 
-## Commands
+### Commands
 Command                | Description                                      |
 -----------------------|--------------------------------------------------|
 `$ npm start`          | Start the development server
@@ -9,3 +9,5 @@ Command                | Description                                      |
 `$ npm run build`      | Compile all files into `dist/`
 `$ npm run create`     | Generate a scaffold file
 `$ npm run inspect`    | Inspect the bundle's dependencies
+`$ npm run get-issues` | Download latest issues from GitHub
+

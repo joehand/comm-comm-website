@@ -1,6 +1,6 @@
-var html = require('choo/html')
+const html = require('choo/html')
 
-var TITLE = 'comm-comm-site - route not found'
+const TITLE = 'comm-comm-site - route not found'
 
 module.exports = view
 
